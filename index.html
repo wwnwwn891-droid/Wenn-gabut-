@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kuis Susah</title>
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+}
+
+#box{
+margin-top:50px;
+}
+
+button{
+padding:10px;
+margin:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🧠 Game Kuis Susah</h1>
+
+<div id="box">
+
+<h2 id="soal"></h2>
+
+<button onclick="jawab(0)" id="a"></button>
+<button onclick="jawab(1)" id="b"></button>
+<button onclick="jawab(2)" id="c"></button>
+<button onclick="jawab(3)" id="d"></button>
+
+<p id="hasil"></p>
+
+</div>
+
+<script>
+
+let skor = 0
+
+let kuis = [
+
+{
+t:"Saya punya kota tapi tidak ada rumah. Saya punya sungai tapi tidak ada air. Apa saya?",
+j:["Peta","Pulau","Buku","Hutan"],
+b:0
+},
+
+{
+t:"Semakin banyak diambil semakin besar. Apa itu?",
+j:["Lubang","Api","Air","Uang"],
+b:0
+},
+
+{
+t:"Apa yang selalu naik tapi tidak pernah turun?",
+j:["Umur","Air","Balon","Harga"],
+b:0
+},
+
+{
+t:"Saya berjalan tanpa kaki dan menangis tanpa mata. Apa saya?",
+j:["Awan","Air","Angin","Api"],
+b:1
+},
+
+{
+t:"Apa yang punya banyak gigi tapi tidak bisa menggigit?",
+j:["Gergaji","Sisir","Hiu","Mesin"],
+b:1
+},
+
+{
+t:"Apa yang bisa keliling dunia tapi tetap di tempat?",
+j:["Jam","Perangko","Bola","Peta"],
+b:1
+},
+
+{
+t:"Apa yang jika dibalik menjadi lebih besar?",
+j:["Angka 6","Angka 9","Angka 8","Angka 3"],
+b:0
+},
+
+{
+t:"Apa yang selalu datang tapi tidak pernah tiba?",
+j:["Besok","Hari ini","Kemarin","Waktu"],
+b:0
+},
+
+{
+t:"Apa yang bisa dipecahkan tapi tidak bisa dipegang?",
+j:["Janji","Telur","Batu","Air"],
+b:0
+},
+
+{
+t:"Apa yang makin kering ketika dipakai?",
+j:["Handuk","Air","Spons","Kertas"],
+b:0
+}
+
+]
+
+let nomor = 0
+
+function tampil(){
+
+document.getElementById("soal").innerHTML = kuis[nomor].t
+document.getElementById("a").innerHTML = kuis[nomor].j[0]
+document.getElementById("b").innerHTML = kuis[nomor].j[1]
+document.getElementById("c").innerHTML = kuis[nomor].j[2]
+document.getElementById("d").innerHTML = kuis[nomor].j[3]
+
+}
+
+function jawab(p){
+
+if(p == kuis[nomor].b){
+skor++
+document.getElementById("hasil").innerHTML="✅ Benar"
+}else{
+document.getElementById("hasil").innerHTML="❌ Salah"
+}
+
+nomor++
+
+if(nomor < kuis.length){
+
+setTimeout(function(){
+document.getElementById("hasil").innerHTML=""
+tampil()
+},1000)
+
+}else{
+
+setTimeout(function(){
+document.getElementById("box").innerHTML =
+"<h2>Game selesai</h2><h3>Skor kamu: "+skor+"/10</h3>"
+},1000)
+
+}
+
+}
+
+tampil()
+
+</script>
+
+</body>
+  </html>
